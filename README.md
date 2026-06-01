@@ -46,7 +46,7 @@ streamlit run app.py
 
 ## Live demo
 
-[Click here to open the dashboard](#) ← will update with live link
+[http://192.168.29.134:8501](#) 
 
 ## What I learned
 
