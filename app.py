@@ -191,3 +191,46 @@ if not drug_data.empty:
         }
     ))
     st.plotly_chart(fig4, use_container_width=True)
+
+
+    st.divider()
+
+# --- ML Model Section ---
+st.subheader("🤖 Predictive Model — Will This Shortage Last Over 1 Year?")
+
+st.markdown("""
+This XGBoost model predicts whether an active shortage will exceed 
+365 days based on category criticality, availability status, and duration.
+""")
+
+# Feature importance chart
+from xgboost import plot_importance
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(8, 4))
+plot_importance(model, ax=ax, 
+                title='Feature Importance — Drug Shortage Predictor')
+plt.tight_layout()
+st.pyplot(fig)
+
+# Per drug prediction
+st.subheader("Shortage Duration Prediction")
+selected = st.selectbox(
+    "Select a drug to predict",
+    df['Generic Name'].sort_values().unique(),
+    key='ml_select'
+)
+
+drug_row = df[df['Generic Name'] == selected].iloc[0]
+drug_features = pd.DataFrame([{
+    'is_critical': drug_row['is_critical'],
+    'no_availability': drug_row['no_availability'],
+    'duration_normalized': drug_row['duration_normalized'],
+    'is_active': drug_row['is_active']
+}])
+
+prob = model.predict_proba(drug_features)[0][1]
+prediction = "🔴 High Risk — Likely to exceed 1 year" if prob > 0.5 else "🟢 Lower Risk"
+
+st.metric("Prediction", prediction)
+st.metric("Probability of Long Shortage", f"{prob:.1%}")
