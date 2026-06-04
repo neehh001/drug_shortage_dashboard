@@ -4,6 +4,12 @@ import sqlite3
 import plotly.express as px
 import plotly.graph_objects as go
 
+import pickle
+
+# Load model
+with open('model.pkl', 'rb') as f:
+    model = pickle.load(f)
+
 # --- Page config ---
 st.set_page_config(
     page_title="Drug Shortage Early Warning System",
