@@ -374,7 +374,7 @@ if not drug_data.empty:
 
     # ML Prediction
     st.markdown("<hr>", unsafe_allow_html=True)
-    st.markdown("#### ML Prediction — Will This Shortage Exceed 1 Year?")
+    st.markdown("#### Will This Shortage Exceed 1 Year?")
 
     drug_features = pd.DataFrame([{
         'is_critical': row['is_critical'],
