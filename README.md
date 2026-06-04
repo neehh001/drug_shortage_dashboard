@@ -23,7 +23,7 @@ decisions, real insights.
 
 ## The interesting finding
 
-Anesthesia/Psychiatry drugs have been in shortage for an average of 
+Anesthesia/Pediatric drugs have been in shortage for an average of 
 **13 years**. Oncology and Cardiovascular categories are not far behind. 
 These aren't temporary supply hiccups — they are systemic failures that 
 have been quietly ongoing for over a decade.
@@ -46,7 +46,7 @@ streamlit run app.py
 
 ## Live demo
 
-[http://192.168.29.134:8501](#) 
+[https://drugshortagedashboard-neha.streamlit.app/](#) 
 
 ## What I learned
 
